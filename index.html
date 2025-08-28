@@ -277,6 +277,10 @@
             margin-bottom: 15px;
         }
 
+        .primary-result .result-description {
+            color: white;
+        }
+
         .restart-btn {
             background: white;
             color: #764ba2;
@@ -645,6 +649,36 @@
     </div>
 
     <script>
+        // Check for URL parameters on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('results') === 'show' || urlParams.get('results') === 'true') {
+                showDemoResults();
+            }
+        });
+
+        function showDemoResults() {
+            // Hide everything else
+            document.getElementById('introSection').style.display = 'none';
+            document.getElementById('disclaimerBox').style.display = 'none';
+            document.getElementById('subtitleText').style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'none';
+            document.getElementById('quizContainer').style.display = 'none';
+            
+            // Show results with demo data
+            const demoScores = {
+                classic: { score: 6, threshold: 5, name: "Classic ADD", description: "Characterized by hyperactivity, impulsivity, and inattention. This is the most recognized form of ADHD with restless behavior and difficulty sitting still." },
+                inattentive: { score: 5, threshold: 5, name: "Inattentive ADD", description: "Presents as quiet daydreamers who appear unmotivated. Often goes undiagnosed due to lack of hyperactive behavior." },
+                overfocused: { score: 3, threshold: 6, name: "Over-focused ADD", description: "Combines ADHD symptoms with inability to shift attention, creating rigid thinking patterns and oppositional behavior." },
+                temporal: { score: 2, threshold: 4, name: "Temporal Lobe ADD", description: "Features memory problems, learning difficulties, and explosive aggression alongside attention deficits." },
+                limbic: { score: 4, threshold: 4, name: "Limbic ADD", description: "Combines attention deficits with chronic low-level sadness and negativity that affects motivation." },
+                ringoffire: { score: 1, threshold: 4, name: "Ring of Fire ADD", description: "Shows global brain hyperactivity with extreme sensory sensitivity and overwhelming symptoms across all domains." },
+                anxious: { score: 5, threshold: 5, name: "Anxious ADD", description: "Features severe anxiety and physical stress symptoms alongside classic ADHD, creating performance paralysis." }
+            };
+            
+            displayResults(demoScores, 'classic');
+        }
+
         const questions = [
             // Classic ADD Questions
             {
