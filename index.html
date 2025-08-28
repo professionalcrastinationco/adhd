@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Types of ADHD Assessment Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .disclaimer {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 15ingham;
+            margin-bottom: 30px;
+            color: #856404;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .progress-container {
+            background: #e9ecef;
+            border-radius: 20px;
+            height: 8px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+            border-radius: 20px;
+        }
+
+        .question-container {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .question-container.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-number {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .question-text {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        .answer-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .answer-btn {
+            padding: 18px 25px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.05em;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: #764ba2;
+        }
+
+        .answer-btn.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .frequency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+        }
+
+        .frequency-btn {
+            padding: 15px 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 20px;
+        }
+
+        .nav-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .prev-btn {
+            background: #e9ecef;
+            color: #495057;
+        }
+
+        .prev-btn:hover:not(:disabled) {
+            background: #dee2e6;
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            flex-grow: 1;
+        }
+
+        .next-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(103, 126, 234, 0.3);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .results-container {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .results-container.active {
+            display: block;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .result-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .result-score {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: #764ba2;
+        }
+
+        .result-bar {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            height: 30px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .result-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 1s ease;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .result-description {
+            color: #495057;
+            line-height: 1.6;
+            margin-top: 15px;
+        }
+
+        .primary-result {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(103, 126, 234, 0.3);
+        }
+
+        .primary-result .result-title {
+            color: white;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .restart-btn {
+            background: white;
+            color: #764ba2;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.2s ease;
+        }
+
+        .restart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .frequency-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .question-text {
+                font-size: 1.1em;
+            }
+        }
+
+        .intro-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .intro-section h2 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+
+        .intro-section p {
+            color: #495057;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .start-quiz-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .start-quiz-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(103, 126, 234, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>7 Types of ADHD Assessment</h1>
+            <p class="subtitle">Based on Dr. Daniel Amen's Classification System</p>
+        </div>
+
+        <div class="disclaimer">
+            <strong>⚠️ Important Notice:</strong> This assessment is based on Dr. Amen's controversial 7-type ADHD model, which is not scientifically validated or recognized by mainstream psychiatry. This quiz is for educational purposes only and should not replace professional medical diagnosis. Please consult with a qualified healthcare provider for proper ADHD evaluation and treatment.
+        </div>
+
+        <div class="intro-section" id="introSection">
+            <h2>About This Assessment</h2>
+            <p>This comprehensive questionnaire will help identify potential ADHD type patterns based on Dr. Amen's framework. The assessment examines seven distinct presentations:</p>
+            <ul style="margin: 20px 0; padding-left: 30px; color: #495057; line-height: 1.8;">
+                <li><strong>Classic ADD</strong> - Hyperactive and impulsive</li>
+                <li><strong>Inattentive ADD</strong> - Quiet and unfocused</li>
+                <li><strong>Over-focused ADD</strong> - Stuck in negative patterns</li>
+                <li><strong>Temporal Lobe ADD</strong> - Memory and mood issues</li>
+                <li><strong>Limbic ADD</strong> - Depression-like symptoms</li>
+                <li><strong>Ring of Fire ADD</strong> - Extreme sensory sensitivity</li>
+                <li><strong>Anxious ADD</strong> - Worry and physical tension</li>
+            </ul>
+            <p>The assessment takes approximately 10-15 minutes to complete. Answer each question based on how frequently you experience these symptoms.</p>
+            <button class="start-quiz-btn" onclick="startQuiz()">Begin Assessment</button>
+        </div>
+
+        <div class="progress-container" id="progressContainer" style="display: none;">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div id="quizContainer"></div>
+
+        <div class="results-container" id="resultsContainer"></div>
+    </div>
+
+    <script>
+        const questions = [
+            // Classic ADD Questions
+            {
+                category: "classic",
+                text: "How often do you have trouble sitting still or feel restless?",
+                type: "frequency"
+            },
+            {
+                category: "classic",
+                text: "How often do you fidget with your hands, feet, or objects around you?",
+                type: "frequency"
+            },
+            {
+                category: "classic",
+                text: "How often do you feel like you're 'driven by a motor' or always need to be moving?",
+                type: "frequency"
+            },
+            {
+                category: "classic",
+                text: "How often do you act impulsively without thinking through consequences?",
+                type: "frequency"
+            },
+            {
+                category: "classic",
+                text: "How often do you interrupt others or have trouble waiting your turn?",
+                type: "frequency"
+            },
+            {
+                category: "classic",
+                text: "How often do you talk excessively or feel like you can't stop talking?",
+                type: "frequency"
+            },
+            {
+                category: "classic",
+                text: "How often do you have difficulty completing tasks or following through on projects?",
+                type: "frequency"
+            },
+
+            // Inattentive ADD Questions
+            {
+                category: "inattentive",
+                text: "How often do you daydream or get lost in your thoughts?",
+                type: "frequency"
+            },
+            {
+                category: "inattentive",
+                text: "How often do people describe you as 'spacey' or say you seem to be in your own world?",
+                type: "frequency"
+            },
+            {
+                category: "inattentive",
+                text: "How often do you procrastinate or avoid tasks that require sustained mental effort?",
+                type: "frequency"
+            },
+            {
+                category: "inattentive",
+                text: "How often do you lose things necessary for tasks (keys, phone, documents)?",
+                type: "frequency"
+            },
+            {
+                category: "inattentive",
+                text: "How often do you have trouble organizing tasks and activities?",
+                type: "frequency"
+            },
+            {
+                category: "inattentive",
+                text: "How often do you forget daily activities or appointments?",
+                type: "frequency"
+            },
+            {
+                category: "inattentive",
+                text: "How often are you easily distracted by external stimuli or unrelated thoughts?",
+                type: "frequency"
+            },
+
+            // Over-focused ADD Questions
+            {
+                category: "overfocused",
+                text: "How often do you get stuck on negative thoughts or worries?",
+                type: "frequency"
+            },
+            {
+                category: "overfocused",
+                text: "How often do you have trouble shifting from one activity to another?",
+                type: "frequency"
+            },
+            {
+                category: "overfocused",
+                text: "How often do you become upset when things don't go as planned?",
+                type: "frequency"
+            },
+            {
+                category: "overfocused",
+                text: "How often do you argue or become oppositional when asked to do something?",
+                type: "frequency"
+            },
+            {
+                category: "overfocused",
+                text: "How often do you hold grudges or have trouble letting go of past hurts?",
+                type: "frequency"
+            },
+            {
+                category: "overfocused",
+                text: "How often do you have obsessive thoughts or compulsive behaviors?",
+                type: "frequency"
+            },
+            {
+                category: "overfocused",
+                text: "How often do you need things to be done in a specific way or order?",
+                type: "frequency"
+            },
+
+            // Temporal Lobe ADD Questions
+            {
+                category: "temporal",
+                text: "How often do you have explosive outbursts or unpredictable rage episodes?",
+                type: "frequency"
+            },
+            {
+                category: "temporal",
+                text: "How often do you have memory problems or forget what you've read?",
+                type: "frequency"
+            },
+            {
+                category: "temporal",
+                text: "How often do you experience periods of confusion or spaciness?",
+                type: "frequency"
+            },
+            {
+                category: "temporal",
+                text: "How often do you have dark, violent, or suicidal thoughts?",
+                type: "frequency"
+            },
+            {
+                category: "temporal",
+                text: "How often do you experience paranoid thoughts or feel like people are against you?",
+                type: "frequency"
+            },
+            {
+                category: "temporal",
+                text: "How often do you have headaches or head pressure?",
+                type: "frequency"
+            },
+            {
+                category: "temporal",
+                text: "How often do you experience déjà vu or strange sensory experiences?",
+                type: "frequency"
+            },
+
+            // Limbic ADD Questions
+            {
+                category: "limbic",
+                text: "How often do you feel sad, hopeless, or chronically unhappy?",
+                type: "frequency"
+            },
+            {
+                category: "limbic",
+                text: "How often do you have low energy or feel physically slowed down?",
+                type: "frequency"
+            },
+            {
+                category: "limbic",
+                text: "How often do you experience feelings of worthlessness or excessive guilt?",
+                type: "frequency"
+            },
+            {
+                category: "limbic",
+                text: "How often do you lose interest in activities you once enjoyed?",
+                type: "frequency"
+            },
+            {
+                category: "limbic",
+                text: "How often do you isolate yourself or withdraw from social situations?",
+                type: "frequency"
+            },
+            {
+                category: "limbic",
+                text: "How often do you have trouble with motivation, even for important tasks?",
+                type: "frequency"
+            },
+            {
+                category: "limbic",
+                text: "How often do you have negative thoughts about yourself or your future?",
+                type: "frequency"
+            },
+
+            // Ring of Fire ADD Questions
+            {
+                category: "ringoffire",
+                text: "How often are you hypersensitive to noise, light, touch, or clothing textures?",
+                type: "frequency"
+            },
+            {
+                category: "ringoffire",
+                text: "How often do you experience rapid mood swings throughout the day?",
+                type: "frequency"
+            },
+            {
+                category: "ringoffire",
+                text: "How often do your thoughts race so fast you can't keep up with them?",
+                type: "frequency"
+            },
+            {
+                category: "ringoffire",
+                text: "How often do you feel overwhelmed by sensory input in your environment?",
+                type: "frequency"
+            },
+            {
+                category: "ringoffire",
+                text: "How often do you speak rapidly or feel pressure to keep talking?",
+                type: "frequency"
+            },
+            {
+                category: "ringoffire",
+                text: "How often do you have unpredictable behavior that surprises even you?",
+                type: "frequency"
+            },
+            {
+                category: "ringoffire",
+                text: "How often do you experience extreme reactions to foods or environmental allergens?",
+                type: "frequency"
+            },
+
+            // Anxious ADD Questions
+            {
+                category: "anxious",
+                text: "How often do you experience physical symptoms of anxiety (racing heart, sweating, trembling)?",
+                type: "frequency"
+            },
+            {
+                category: "anxious",
+                text: "How often do you freeze or go blank during tests or presentations?",
+                type: "frequency"
+            },
+            {
+                category: "anxious",
+                text: "How often do you predict the worst possible outcome in situations?",
+                type: "frequency"
+            },
+            {
+                category: "anxious",
+                text: "How often do you have headaches, stomachaches, or muscle tension?",
+                type: "frequency"
+            },
+            {
+                category: "anxious",
+                text: "How often do you avoid situations due to fear of embarrassment or failure?",
+                type: "frequency"
+            },
+            {
+                category: "anxious",
+                text: "How often do you have trouble falling asleep due to worry?",
+                type: "frequency"
+            },
+            {
+                category: "anxious",
+                text: "How often do you feel overwhelmed by having too many things to do?",
+                type: "frequency"
+            }
+        ];
+
+        let currentQuestion = 0;
+        let answers = {};
+        let quizStarted = false;
+
+        function startQuiz() {
+            document.getElementById('introSection').style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'block';
+            quizStarted = true;
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const container = document.getElementById('quizContainer');
+            const question = questions[currentQuestion];
+            
+            container.innerHTML = `
+                <div class="question-container active">
+                    <div class="question-number">Question ${currentQuestion + 1} of ${questions.length}</div>
+                    <div class="question-text">${question.text}</div>
+                    <div class="answer-grid frequency-grid">
+                        <button class="answer-btn frequency-btn" onclick="selectAnswer(0)" data-value="0">
+                            Never
+                        </button>
+                        <button class="answer-btn frequency-btn" onclick="selectAnswer(1)" data-value="1">
+                            Rarely
+                        </button>
+                        <button class="answer-btn frequency-btn" onclick="selectAnswer(2)" data-value="2">
+                            Sometimes
+                        </button>
+                        <button class="answer-btn frequency-btn" onclick="selectAnswer(3)" data-value="3">
+                            Frequently
+                        </button>
+                        <button class="answer-btn frequency-btn" onclick="selectAnswer(4)" data-value="4">
+                            Very Frequently
+                        </button>
+                    </div>
+                    <div class="navigation">
+                        <button class="nav-btn prev-btn" onclick="previousQuestion()" ${currentQuestion === 0 ? 'disabled' : ''}>
+                            Previous
+                        </button>
+                        <button class="nav-btn next-btn" onclick="nextQuestion()" ${!answers[currentQuestion] ? 'disabled' : ''}>
+                            ${currentQuestion === questions.length - 1 ? 'View Results' : 'Next Question'}
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Restore selected answer if exists
+            if (answers[currentQuestion] !== undefined) {
+                const buttons = document.querySelectorAll('.answer-btn');
+                buttons[answers[currentQuestion]].classList.add('selected');
+            }
+
+            updateProgressBar();
+        }
+
+        function selectAnswer(value) {
+            answers[currentQuestion] = value;
+            
+            // Update button styles
+            const buttons = document.querySelectorAll('.answer-btn');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            buttons[value].classList.add('selected');
+
+            // Enable next button
+            document.querySelector('.next-btn').disabled = false;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                calculateResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+        }
+
+        function calculateResults() {
+            const scores = {
+                classic: { score: 0, threshold: 5, name: "Classic ADD", description: "Characterized by hyperactivity, impulsivity, and inattention. This is the most recognized form of ADHD with restless behavior and difficulty sitting still." },
+                inattentive: { score: 0, threshold: 5, name: "Inattentive ADD", description: "Presents as quiet daydreamers who appear unmotivated. Often goes undiagnosed due to lack of hyperactive behavior." },
+                overfocused: { score: 0, threshold: 6, name: "Over-focused ADD", description: "Combines ADHD symptoms with inability to shift attention, creating rigid thinking patterns and oppositional behavior." },
+                temporal: { score: 0, threshold: 4, name: "Temporal Lobe ADD", description: "Features memory problems, learning difficulties, and explosive aggression alongside attention deficits." },
+                limbic: { score: 0, threshold: 4, name: "Limbic ADD", description: "Combines attention deficits with chronic low-level sadness and negativity that affects motivation." },
+                ringoffire: { score: 0, threshold: 4, name: "Ring of Fire ADD", description: "Shows global brain hyperactivity with extreme sensory sensitivity and overwhelming symptoms across all domains." },
+                anxious: { score: 0, threshold: 5, name: "Anxious ADD", description: "Features severe anxiety and physical stress symptoms alongside classic ADHD, creating performance paralysis." }
+            };
+
+            // Calculate scores for each category
+            questions.forEach((question, index) => {
+                const answer = answers[index] || 0;
+                if (answer >= 3) { // Count "Frequently" (3) and "Very Frequently" (4)
+                    scores[question.category].score++;
+                }
+            });
+
+            // Determine primary type
+            let primaryType = null;
+            let highestScore = 0;
+            
+            for (const [key, data] of Object.entries(scores)) {
+                if (data.score >= data.threshold && data.score > highestScore) {
+                    primaryType = key;
+                    highestScore = data.score;
+                }
+            }
+
+            displayResults(scores, primaryType);
+        }
+
+        function displayResults(scores, primaryType) {
+            const container = document.getElementById('resultsContainer');
+            const quizContainer = document.getElementById('quizContainer');
+            const progressContainer = document.getElementById('progressContainer');
+            
+            quizContainer.style.display = 'none';
+            progressContainer.style.display = 'none';
+            container.classList.add('active');
+
+            let resultsHTML = '<h2 style="color: #764ba2; margin-bottom: 25px; text-align: center;">Your Assessment Results</h2>';
+
+            if (primaryType) {
+                resultsHTML += `
+                    <div class="primary-result">
+                        <div class="result-title">Primary Type Identified: ${scores[primaryType].name}</div>
+                        <div class="result-description">${scores[primaryType].description}</div>
+                        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.3);">
+                            <strong>Score:</strong> ${scores[primaryType].score} out of 7 questions met threshold
+                        </div>
+                    </div>
+                `;
+            } else {
+                resultsHTML += `
+                    <div class="primary-result" style="background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);">
+                        <div class="result-title">No Single Type Identified</div>
+                        <div class="result-description">Your responses don't clearly match any single ADHD type in Dr. Amen's classification. This could mean you have a mixed presentation or that professional evaluation is needed for accurate diagnosis.</div>
+                    </div>
+                `;
+            }
+
+            resultsHTML += '<h3 style="color: #495057; margin-bottom: 20px;">Detailed Scores by Type:</h3>';
+
+            // Sort scores by value
+            const sortedScores = Object.entries(scores).sort((a, b) => b[1].score - a[1].score);
+
+            sortedScores.forEach(([key, data]) => {
+                const percentage = (data.score / 7) * 100;
+                const meetsThreshold = data.score >= data.threshold;
+                
+                resultsHTML += `
+                    <div class="result-card" style="${meetsThreshold ? 'border: 2px solid #764ba2;' : ''}">
+                        <div class="result-header">
+                            <div class="result-title">${data.name}</div>
+                            <div class="result-score">${data.score}/7 symptoms</div>
+                        </div>
+                        <div class="result-bar">
+                            <div class="result-fill" style="width: ${percentage}%;">
+                                ${Math.round(percentage)}%
+                            </div>
+                        </div>
+                        <div class="result-description">
+                            ${data.description}
+                            ${meetsThreshold ? '<br><strong style="color: #764ba2;">✓ Meets threshold for this type</strong>' : ''}
+                        </div>
+                    </div>
+                `;
+            });
+
+            resultsHTML += `
+                <div style="text-align: center;">
+                    <button class="restart-btn" onclick="restartQuiz()">Take Assessment Again</button>
+                </div>
+            `;
+
+            container.innerHTML = resultsHTML;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            answers = {};
+            quizStarted = false;
+            
+            document.getElementById('resultsContainer').classList.remove('active');
+            document.getElementById('resultsContainer').innerHTML = '';
+            document.getElementById('quizContainer').style.display = 'block';
+            document.getElementById('quizContainer').innerHTML = '';
+            document.getElementById('introSection').style.display = 'block';
+            document.getElementById('progressContainer').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
