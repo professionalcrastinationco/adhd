@@ -51,7 +51,7 @@
             background: #fff3cd;
             border: 2px solid #ffc107;
             border-radius: 10px;
-            padding: 15ingham;
+            padding: 15px;
             margin-bottom: 30px;
             color: #856404;
             font-size: 0.95em;
@@ -130,6 +130,7 @@
         @media (hover: none) {
             .answer-btn:hover {
                 transform: none;
+                box-shadow: none;
             }
         }
 
@@ -294,131 +295,6 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            .container {
-                padding: 20px;
-                border-radius: 15px;
-            }
-
-            h1 {
-                font-size: 1.8em;
-            }
-
-            .subtitle {
-                font-size: 1em;
-            }
-
-            .disclaimer {
-                font-size: 0.85em;
-                padding: 12px;
-            }
-
-            .intro-section {
-                padding: 20px;
-            }
-
-            .intro-section ul {
-                padding-left: 20px !important;
-            }
-
-            .question-text {
-                font-size: 1.15em;
-                margin-bottom: 25px;
-            }
-
-            .frequency-grid {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-
-            .frequency-btn {
-                padding: 16px 20px;
-                font-size: 1em;
-            }
-
-            .navigation {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .nav-btn {
-                width: 100%;
-                padding: 16px 25px;
-            }
-
-            .prev-btn {
-                order: 2;
-            }
-
-            .next-btn {
-                order: 1;
-            }
-
-            .result-card {
-                padding: 20px;
-            }
-
-            .result-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-
-            .result-title {
-                font-size: 1.2em;
-            }
-
-            .primary-result {
-                padding: 20px;
-            }
-
-            .primary-result .result-title {
-                font-size: 1.4em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 15px;
-            }
-
-            h1 {
-                font-size: 1.5em;
-                margin-bottom: 8px;
-            }
-
-            .subtitle {
-                font-size: 0.9em;
-            }
-
-            .question-number {
-                font-size: 0.85em;
-            }
-
-            .question-text {
-                font-size: 1.05em;
-                line-height: 1.5;
-            }
-
-            .frequency-btn {
-                padding: 14px 16px;
-                font-size: 0.95em;
-            }
-
-            .start-quiz-btn {
-                padding: 16px 30px;
-                font-size: 1.1em;
-            }
-
-            .restart-btn {
-                width: 100%;
-            }
-        }
-
         .intro-section {
             background: #f8f9fa;
             border-radius: 12px;
@@ -435,6 +311,17 @@
             color: #495057;
             line-height: 1.6;
             margin-bottom: 10px;
+        }
+
+        .intro-section ul {
+            margin: 20px 0;
+            padding-left: 30px;
+            color: #495057;
+            line-height: 1.8;
+        }
+
+        .intro-section li {
+            margin-bottom: 8px;
         }
 
         .start-quiz-btn {
@@ -455,6 +342,268 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(103, 126, 234, 0.3);
         }
+
+        /* Tablet styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .disclaimer {
+                font-size: 0.9em;
+                padding: 14px;
+            }
+
+            .intro-section {
+                padding: 20px;
+            }
+
+            .intro-section ul {
+                padding-left: 25px;
+            }
+
+            .question-text {
+                font-size: 1.2em;
+                margin-bottom: 25px;
+            }
+
+            .frequency-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .frequency-btn {
+                padding: 16px 15px;
+                font-size: 0.95em;
+            }
+
+            .navigation {
+                margin-top: 30px;
+            }
+
+            .nav-btn {
+                padding: 14px 20px;
+                font-size: 1em;
+            }
+
+            .result-card {
+                padding: 25px;
+            }
+
+            .result-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .result-title {
+                font-size: 1.25em;
+            }
+
+            .primary-result {
+                padding: 25px;
+            }
+
+            .primary-result .result-title {
+                font-size: 1.5em;
+            }
+        }
+
+        /* Mobile styles */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background-attachment: fixed;
+            }
+
+            .container {
+                padding: 25px 18px;
+                border-radius: 16px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 8px;
+                line-height: 1.2;
+            }
+
+            .subtitle {
+                font-size: 0.95em;
+                margin-bottom: 15px;
+            }
+
+            .disclaimer {
+                font-size: 0.85em;
+                padding: 12px;
+                line-height: 1.4;
+            }
+
+            .intro-section {
+                padding: 18px;
+                border-radius: 10px;
+            }
+
+            .intro-section h2 {
+                font-size: 1.2em;
+                margin-bottom: 12px;
+            }
+
+            .intro-section p {
+                font-size: 0.95em;
+            }
+
+            .intro-section ul {
+                padding-left: 20px;
+                font-size: 0.95em;
+            }
+
+            .intro-section li {
+                margin-bottom: 10px;
+            }
+
+            .intro-section li strong {
+                display: block;
+                margin-bottom: 2px;
+            }
+
+            .start-quiz-btn {
+                padding: 16px 30px;
+                font-size: 1.05em;
+                margin-top: 18px;
+            }
+
+            .progress-container {
+                height: 6px;
+                margin-bottom: 25px;
+            }
+
+            .question-number {
+                font-size: 0.8em;
+                margin-bottom: 8px;
+            }
+
+            .question-text {
+                font-size: 1.05em;
+                line-height: 1.5;
+                margin-bottom: 20px;
+            }
+
+            .frequency-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .frequency-btn {
+                padding: 15px 20px;
+                font-size: 0.95em;
+                border-radius: 10px;
+            }
+
+            .navigation {
+                flex-direction: column-reverse;
+                gap: 10px;
+                margin-top: 25px;
+            }
+
+            .nav-btn {
+                width: 100%;
+                padding: 15px 25px;
+                font-size: 1em;
+            }
+
+            .next-btn {
+                order: 1;
+            }
+
+            .prev-btn {
+                order: 2;
+            }
+
+            .result-card {
+                padding: 20px;
+                border-radius: 12px;
+                margin-bottom: 20px;
+            }
+
+            .result-header {
+                margin-bottom: 15px;
+            }
+
+            .result-title {
+                font-size: 1.15em;
+                line-height: 1.3;
+            }
+
+            .result-score {
+                padding: 8px 16px;
+                font-size: 0.9em;
+                margin-top: 8px;
+                display: inline-block;
+            }
+
+            .result-bar {
+                height: 28px;
+            }
+
+            .result-fill {
+                font-size: 0.9em;
+                padding-right: 8px;
+            }
+
+            .result-description {
+                font-size: 0.95em;
+                line-height: 1.5;
+            }
+
+            .primary-result {
+                padding: 20px;
+                border-radius: 12px;
+                margin-bottom: 25px;
+            }
+
+            .primary-result .result-title {
+                font-size: 1.3em;
+                line-height: 1.3;
+                margin-bottom: 12px;
+            }
+
+            .restart-btn {
+                width: 100%;
+                padding: 15px 30px;
+                font-size: 1em;
+                margin-top: 25px;
+            }
+        }
+
+        /* Small mobile adjustments */
+        @media (max-width: 375px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 1.45em;
+            }
+
+            .frequency-btn {
+                padding: 14px 18px;
+                font-size: 0.9em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -471,22 +620,7 @@
         <div class="intro-section" id="introSection">
             <h2>About This Assessment</h2>
             <p>This comprehensive questionnaire will help identify potential ADHD type patterns based on Dr. Amen's framework. The assessment examines seven distinct presentations:</p>
-        .intro-section ul {
-            margin: 20px 0;
-            padding-left: 30px;
-            color: #495057;
-            line-height: 1.8;
-        }
-
-        .intro-section li {
-            margin-bottom: 8px;
-        }
-
-        @media (hover: none) {
-            .answer-btn:hover {
-                transform: none;
-            }
-        }
+            <ul>
                 <li><strong>Classic ADD</strong> - Hyperactive and impulsive</li>
                 <li><strong>Inattentive ADD</strong> - Quiet and unfocused</li>
                 <li><strong>Over-focused ADD</strong> - Stuck in negative patterns</li>
