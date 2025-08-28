@@ -277,10 +277,6 @@
             margin-bottom: 15px;
         }
 
-        .primary-result .result-description {
-            color: white;
-        }
-
         .restart-btn {
             background: white;
             color: #764ba2;
@@ -518,23 +514,25 @@
             }
 
             .navigation {
-                flex-direction: column-reverse;
+                flex-direction: row;
                 gap: 10px;
                 margin-top: 25px;
             }
 
             .nav-btn {
                 width: 100%;
-                padding: 15px 25px;
+                padding: 15px 20px;
                 font-size: 1em;
             }
 
-            .next-btn {
-                order: 1;
+            .prev-btn {
+                flex: 0 0 auto;
+                width: auto;
+                padding: 15px 20px;
             }
 
-            .prev-btn {
-                order: 2;
+            .next-btn {
+                flex: 1;
             }
 
             .result-card {
@@ -614,7 +612,7 @@
     <div class="container">
         <div class="header">
             <h1>7 Types of ADHD Assessment</h1>
-            <p class="subtitle">Based on Dr. Daniel Amen's Classification System</p>
+            <p class="subtitle" id="subtitleText">Based on Dr. Daniel Amen's Classification System</p>
         </div>
 
         <div class="disclaimer" id="disclaimerBox">
@@ -915,6 +913,7 @@
         function startQuiz() {
             document.getElementById('introSection').style.display = 'none';
             document.getElementById('disclaimerBox').style.display = 'none';
+            document.getElementById('subtitleText').style.display = 'none';
             document.getElementById('progressContainer').style.display = 'block';
             quizStarted = true;
             showQuestion();
@@ -1109,6 +1108,7 @@
             document.getElementById('quizContainer').innerHTML = '';
             document.getElementById('introSection').style.display = 'block';
             document.getElementById('disclaimerBox').style.display = 'block';
+            document.getElementById('subtitleText').style.display = 'block';
             document.getElementById('progressContainer').style.display = 'none';
         }
     </script>
