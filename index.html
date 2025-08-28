@@ -613,7 +613,7 @@
             <p class="subtitle">Based on Dr. Daniel Amen's Classification System</p>
         </div>
 
-        <div class="disclaimer">
+        <div class="disclaimer" id="disclaimerBox">
             <strong>⚠️ Important Notice:</strong> This assessment is based on Dr. Amen's controversial 7-type ADHD model, which is not scientifically validated or recognized by mainstream psychiatry. This quiz is for educational purposes only and should not replace professional medical diagnosis. Please consult with a qualified healthcare provider for proper ADHD evaluation and treatment.
         </div>
 
@@ -910,6 +910,7 @@
 
         function startQuiz() {
             document.getElementById('introSection').style.display = 'none';
+            document.getElementById('disclaimerBox').style.display = 'none';
             document.getElementById('progressContainer').style.display = 'block';
             quizStarted = true;
             showQuestion();
@@ -1103,6 +1104,7 @@
             document.getElementById('quizContainer').style.display = 'block';
             document.getElementById('quizContainer').innerHTML = '';
             document.getElementById('introSection').style.display = 'block';
+            document.getElementById('disclaimerBox').style.display = 'block';
             document.getElementById('progressContainer').style.display = 'none';
         }
     </script>
