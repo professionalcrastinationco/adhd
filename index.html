@@ -127,6 +127,16 @@
             border-color: #764ba2;
         }
 
+        @media (hover: none) {
+            .answer-btn:hover {
+                transform: none;
+            }
+        }
+
+        .answer-btn:active {
+            transform: translateY(0);
+        }
+
         .answer-btn.selected {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -265,12 +275,6 @@
             font-size: 1.8em;
             margin-bottom: 15px;
         }
-        
-        .primary-result .result-description {
-            color: white;
-            font-size: 1.8em;
-            margin-bottom: 15px;
-        }
 
         .restart-btn {
             background: white;
@@ -290,21 +294,128 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
             .container {
-                padding: 25px;
+                padding: 20px;
+                border-radius: 15px;
             }
 
             h1 {
                 font-size: 1.8em;
             }
 
-            .frequency-grid {
-                grid-template-columns: 1fr;
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .disclaimer {
+                font-size: 0.85em;
+                padding: 12px;
+            }
+
+            .intro-section {
+                padding: 20px;
+            }
+
+            .intro-section ul {
+                padding-left: 20px !important;
             }
 
             .question-text {
+                font-size: 1.15em;
+                margin-bottom: 25px;
+            }
+
+            .frequency-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .frequency-btn {
+                padding: 16px 20px;
+                font-size: 1em;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-btn {
+                width: 100%;
+                padding: 16px 25px;
+            }
+
+            .prev-btn {
+                order: 2;
+            }
+
+            .next-btn {
+                order: 1;
+            }
+
+            .result-card {
+                padding: 20px;
+            }
+
+            .result-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .result-title {
+                font-size: 1.2em;
+            }
+
+            .primary-result {
+                padding: 20px;
+            }
+
+            .primary-result .result-title {
+                font-size: 1.4em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+                margin-bottom: 8px;
+            }
+
+            .subtitle {
+                font-size: 0.9em;
+            }
+
+            .question-number {
+                font-size: 0.85em;
+            }
+
+            .question-text {
+                font-size: 1.05em;
+                line-height: 1.5;
+            }
+
+            .frequency-btn {
+                padding: 14px 16px;
+                font-size: 0.95em;
+            }
+
+            .start-quiz-btn {
+                padding: 16px 30px;
                 font-size: 1.1em;
+            }
+
+            .restart-btn {
+                width: 100%;
             }
         }
 
@@ -360,7 +471,22 @@
         <div class="intro-section" id="introSection">
             <h2>About This Assessment</h2>
             <p>This comprehensive questionnaire will help identify potential ADHD type patterns based on Dr. Amen's framework. The assessment examines seven distinct presentations:</p>
-            <ul style="margin: 20px 0; padding-left: 30px; color: #495057; line-height: 1.8;">
+        .intro-section ul {
+            margin: 20px 0;
+            padding-left: 30px;
+            color: #495057;
+            line-height: 1.8;
+        }
+
+        .intro-section li {
+            margin-bottom: 8px;
+        }
+
+        @media (hover: none) {
+            .answer-btn:hover {
+                transform: none;
+            }
+        }
                 <li><strong>Classic ADD</strong> - Hyperactive and impulsive</li>
                 <li><strong>Inattentive ADD</strong> - Quiet and unfocused</li>
                 <li><strong>Over-focused ADD</strong> - Stuck in negative patterns</li>
